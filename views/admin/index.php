@@ -1,6 +1,19 @@
-<header><h3>Article listing</h3></header>
+<header><h3>Employee Listing</h3></header>
+
+<div class="filter border-radius border-all">
+<div class="blocks floar-rgt"><p class="float-lft margin-rgt20">Filter By</p>
+<div class="control-group float-lft margin-rgt20 margin-top5">
+	<label class="margin-rgt20">From</label>
+    <input class="input_width100" type="text" value="11/5/2013" />
+	</div>
+<div class="control-group float-lft margin-rgt20 margin-top5">
+	<label class="margin-rgt20">To</label>
+   <span class="input-wrap"> <input class="input_width100" type="text" value="11/5/2013" /></span>
+	</div></div>
+  </div><!--end of filter-->
+
 <div class="module_content">
-	<table cellspacing="0" class="tablesorter">
+	<table cellspacing="0" class="tablesorter border-all border-radius table-striped table-hover">
 		<thead>
 			<tr>
 				<th>SN</th>
