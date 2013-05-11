@@ -4,7 +4,7 @@
                             You are currently Checked In from <?php echo $this->CheckedInDate;?>
 	  		<input type="submit" name="checkOut" value="Check Out"/>
   <?php } else { ?>
-	  		 <input type="submit" name="checkIn" value="Check In"/>
+	  		 <input class="btn-green" type="submit" name="checkIn" value="Check In"/>
   <?php } ?>
 </form>
 
