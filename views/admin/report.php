@@ -12,9 +12,10 @@
 		</thead>
 		<tbody>
 			<?php
+			r($this->list);
 			$counter = 1;
 			$this->articles = array(1, 2, 3, 4, 5, 6, 7, 8);
-			foreach ($this->articles as $article) :
+			foreach ($this->list as $list) :
 				$class = ($counter % 2 == 0) ? 'even-row' : 'odd-row';
 				?>
 				<tr class="<?php echo $class; ?>">

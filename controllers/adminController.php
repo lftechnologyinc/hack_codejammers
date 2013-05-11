@@ -138,25 +138,50 @@ class adminController extends controller
 		redirect('index.php?controller=admin&action=settings');
 	}
 
-	public function reportAction()
+	public function reportbyidAction()
 	{
+		if (!isset($_REQUEST['id']) || (!is_numeric($_REQUEST['id']))) {
+			notification::setMessage('Invalid user id !');
+			redirect('index.php?controller=admin&action=index');
+		}
+
+		$userId = $_REQUEST['id'];
+
+		$reportObj = new reportModel();
+
+		$list = $reportObj->getReportById($userId);
+
+		$this->view->list = $list;
 		$this->render('admin/report');
 	}
 
 public function createuserAction()
 	{
+		if(isset($_POST['submit'])){
+			$modelObj = new userModel();
+			if($modelObj->addUser($_POST)) {
+			$msg = 'New user added successfully !';
+			notification::setMessage($msg, 'success');
+		} else {
+			$msg = 'New user connot be added!';
+			notification::setMessage($msg);
+		}
+
+		}
+
 		$this->render('admin/createuser');
 	}
-public function listAction()
-	{	
+
+	public function userlistAction()
+	{
 		$this->view->page = 'User Listing';
 		$UserModel = new userModel();
 		$this->view->users = $UserModel->getUsers();
 		$this->render('admin/userlists');
 	}
-	
+
 	public function attendencelistAction()
-	{	
+	{
 		$this->view->page = 'Attendence Listing';
 		$UserModel = new userModel();
 		$this->view->attendences = $UserModel->getAttendences();
