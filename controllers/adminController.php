@@ -1,20 +1,20 @@
 <?php
 
-class adminController extends controller
-{
+  class adminController extends controller
+  {
 
-	function __construct()
-	{
-		parent::__construct();
-		$this->setlayout('admin/dashboard');
-		$this->view->page = 'Dashboard';
-	}
+	  function __construct()
+	  {
+		  parent::__construct();
+		  $this->setlayout('admin/dashboard');
+		  $this->view->page = 'Dashboard';
+	  }
 
-	function setupAction()
-	{
-		database::dbConnect();
+	  function setupAction()
+	  {
+		  database::dbConnect();
 
-		$query = "CREATE TABLE IF NOT EXISTS `article` (
+		  $query = "CREATE TABLE IF NOT EXISTS `article` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `heading` varchar(255) NOT NULL,
   `description` text NOT NULL,
@@ -27,166 +27,172 @@ class adminController extends controller
 
 
 
-		mysql_query($query);
-	}
+		  mysql_query($query);
+	  }
 
-	private function isLogedIn()
-	{
-		$UserModel = new userModel();
-		$UserModel->loginCheck();
-	}
+	  private function isLogedIn()
+	  {
+		  $UserModel = new userModel();
+		  $UserModel->loginCheck();
+	  }
 
-	function indexAction()
-	{
-		$this->isLogedIn();
-		$this->view->page = 'Article Listing';
-		$ArticleModel = new articleModel();
-		$this->view->articles = $ArticleModel->getArticleList();
-		$this->render('admin/index');
-	}
+	  function indexAction()
+	  {
+		  $this->isLogedIn();
+		  $this->view->page = 'Article Listing';
+		  $ArticleModel = new articleModel();
+		  $this->view->articles = $ArticleModel->getArticleList();
+		  $this->render('admin/index');
+	  }
 
-	function saveAction()
-	{
-		$this->isLogedIn();
-		$ArticleModel = new articleModel();
+	  function saveAction()
+	  {
+		  $this->isLogedIn();
+		  $ArticleModel = new articleModel();
 
-		if ($ArticleModel->saveArticle($_POST)) {
-			$msg = 'Article saved successfully !';
-			notification::setMessage($msg, 'success');
-		} else {
-			$msg = 'Article could not be saved !';
-			notification::setMessage($msg);
-		}
+		  if ($ArticleModel->saveArticle($_POST)) {
+			  $msg = 'Article saved successfully !';
+			  notification::setMessage($msg, 'success');
+		  } else {
+			  $msg = 'Article could not be saved !';
+			  notification::setMessage($msg);
+		  }
 
-		redirect('index.php?controller=admin&action=index');
-	}
+		  redirect('index.php?controller=admin&action=index');
+	  }
 
-	function addAction()
-	{
-		$this->isLogedIn();
-		$this->view->page = 'Add Article';
-		$this->render('admin/add');
-	}
+	  function addAction()
+	  {
+		  $this->isLogedIn();
+		  $this->view->page = 'Add Article';
+		  $this->render('admin/add');
+	  }
 
-	function editAction()
-	{
-		$this->isLogedIn();
-		$id = $_GET['id'];
-		if (!is_numeric($id)) {
-			redirect('index.php?controller=admin&action=index');
-		}
+	  function editAction()
+	  {
+		  $this->isLogedIn();
+		  $id = $_GET['id'];
+		  if (!is_numeric($id)) {
+			  redirect('index.php?controller=admin&action=index');
+		  }
 
-		$ArticleModel = new articleModel();
+		  $ArticleModel = new articleModel();
 
-		$data = $ArticleModel->getArticle($id);
+		  $data = $ArticleModel->getArticle($id);
 
-		if ((!is_array($data)) || (count($data) <= 0)) {
-			notification::setMessage('Article with ' . $id . ' not found!!');
-			redirect('index.php?controller=admin&action=index');
-		}
-		$this->view->page = 'Edit Article';
-		$this->view->data = $data;
-		$this->render('admin/add');
-	}
+		  if ((!is_array($data)) || (count($data) <= 0)) {
+			  notification::setMessage('Article with ' . $id . ' not found!!');
+			  redirect('index.php?controller=admin&action=index');
+		  }
+		  $this->view->page = 'Edit Article';
+		  $this->view->data = $data;
+		  $this->render('admin/add');
+	  }
 
-	function deleteAction()
-	{
-		$this->isLogedIn();
-		$id = $_GET['id'];
-		if (!is_numeric($id)) {
-			redirect('index.php?controller=admin&action=index');
-		}
+	  function deleteAction()
+	  {
+		  $this->isLogedIn();
+		  $id = $_GET['id'];
+		  if (!is_numeric($id)) {
+			  redirect('index.php?controller=admin&action=index');
+		  }
 
-		$ArticleModel = new articleModel();
+		  $ArticleModel = new articleModel();
 
-		if ($ArticleModel->deleteArticle($id)) {
-			$msg = 'Article deleated successfully !';
-			notification::setMessage($msg, 'success');
-		} else {
-			$msg = 'Article could not be deleated !';
-			notification::setMessage($msg);
-		}
+		  if ($ArticleModel->deleteArticle($id)) {
+			  $msg = 'Article deleated successfully !';
+			  notification::setMessage($msg, 'success');
+		  } else {
+			  $msg = 'Article could not be deleated !';
+			  notification::setMessage($msg);
+		  }
 
-		$this->view->articles = $ArticleModel->getArticleList();
-		$this->render('admin/index');
-	}
+		  $this->view->articles = $ArticleModel->getArticleList();
+		  $this->render('admin/index');
+	  }
 
-	public function settingsAction()
-	{
+	  public function settingsAction()
+	  {
 
-		$this->view->page = 'Settings';
-		$OptionObj = new optionsModel();
+		  $this->view->page = 'Settings';
+		  $OptionObj = new optionsModel();
 
-		$this->view->product_limit = $OptionObj->getOption('product_limit');
-		$this->view->new_product_limit = $OptionObj->getOption('new_product_limit');
-		$this->view->event_limit = $OptionObj->getOption('event_limit');
+		  $this->view->product_limit = $OptionObj->getOption('product_limit');
+		  $this->view->new_product_limit = $OptionObj->getOption('new_product_limit');
+		  $this->view->event_limit = $OptionObj->getOption('event_limit');
 
-		$this->render('admin/settings');
-	}
+		  $this->render('admin/settings');
+	  }
 
-	public function savesettingsAction()
-	{
-		$OptionObj = new optionsModel();
+	  public function savesettingsAction()
+	  {
+		  $OptionObj = new optionsModel();
 
-		$options = $_POST['options'];
-		foreach ($options as $key => $value) {
-			$result = $OptionObj->saveOption($key, $value);
-		}
+		  $options = $_POST['options'];
+		  foreach ($options as $key => $value) {
+			  $result = $OptionObj->saveOption($key, $value);
+		  }
 
-		notification::setMessage('Settings saved successfully !', 'success');
+		  notification::setMessage('Settings saved successfully !', 'success');
 
-		redirect('index.php?controller=admin&action=settings');
-	}
+		  redirect('index.php?controller=admin&action=settings');
+	  }
 
-	public function reportbyidAction()
-	{
-		if (!isset($_REQUEST['id']) || (!is_numeric($_REQUEST['id']))) {
-			notification::setMessage('Invalid user id !');
-			redirect('index.php?controller=admin&action=index');
-		}
+	  public function reportbyidAction()
+	  {
+		  if (!isset($_REQUEST['id']) || (!is_numeric($_REQUEST['id']))) {
+			  notification::setMessage('Invalid user id !');
+			  redirect('index.php?controller=admin&action=index');
+		  }
 
-		$userId = $_REQUEST['id'];
+		  $userId = $_REQUEST['id'];
 
-		$reportObj = new reportModel();
+		  $reportObj = new reportModel();
 
-		$list = $reportObj->getReportById($userId);
+		  $list = $reportObj->getReportById($userId);
 
-		$this->view->list = $list;
-		$this->render('admin/report');
-	}
+		  $this->view->list = $list;
+		  $this->render('admin/report');
+	  }
 
-public function createuserAction()
-	{
-		if(isset($_POST['submit'])){
-			$modelObj = new userModel();
-			if($modelObj->addUser($_POST)) {
-			$msg = 'New user added successfully !';
-			notification::setMessage($msg, 'success');
-		} else {
-			$msg = 'New user connot be added!';
-			notification::setMessage($msg);
-		}
+	  public function createuserAction()
+	  {
+		  if (isset($_POST['submit'])) {
+			  if(trim($_POST['password']) == trim($_POST['rePassword'])) {
+				  $modelObj = new userModel();
+				  if ($modelObj->addUser($_POST)) {
+					  $msg = 'New user added successfully !';
+					  notification::setMessage($msg, 'success');
+				  } else {
+					  $msg = 'New user connot be added!';
+					  notification::setMessage($msg);
+					  $this->view->post = $_POST;
+				  }
+			  } else {
+				  $msg = 'Please match the password with re-password.';
+				  notification::setMessage($msg);
+				  $this->view->post = $_POST;
+			  }
+		  }
 
-		}
+		  $this->render('admin/createuser');
+	  }
 
-		$this->render('admin/createuser');
-	}
+	  public function userlistAction()
+	  {
+		  $this->view->page = 'User Listing';
+		  $UserModel = new userModel();
+		  $this->view->users = $UserModel->getUsers();
+		  $this->render('admin/userlists');
+	  }
 
-	public function userlistAction()
-	{
-		$this->view->page = 'User Listing';
-		$UserModel = new userModel();
-		$this->view->users = $UserModel->getUsers();
-		$this->render('admin/userlists');
-	}
+	  public function attendencelistAction()
+	  {
+		  $this->view->page = 'Attendence Listing';
+		  $UserModel = new userModel();
+		  $this->view->attendences = $UserModel->getAttendences();
+		  $this->render('admin/attendencelists');
+	  }
 
-	public function attendencelistAction()
-	{
-		$this->view->page = 'Attendence Listing';
-		$UserModel = new userModel();
-		$this->view->attendences = $UserModel->getAttendences();
-		$this->render('admin/attendencelists');
-	}
-
-}
+  }
 
