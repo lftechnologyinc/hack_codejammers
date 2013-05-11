@@ -16,7 +16,7 @@ class model
 		$result = mysql_query("SHOW COLUMNS FROM `$table` WHERE `Key`!='PRI' $where");
 
 		if ($result) {
-			while ($row = $result->fetch_assoc()) {
+			while ($row = mysql_fetch_assoc($result)) {
 				$return[] = $row;
 			}
 		}

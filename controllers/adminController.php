@@ -138,8 +138,20 @@ class adminController extends controller
 		redirect('index.php?controller=admin&action=settings');
 	}
 
-	public function reportAction()
+	public function reportbyidAction()
 	{
+		if (!isset($_REQUEST['id']) || (!is_numeric($_REQUEST['id']))) {
+			notification::setMessage('Invalid user id !');
+			redirect('index.php?controller=admin&action=index');
+		}
+
+		$userId = $_REQUEST['id'];
+
+		$reportObj = new reportModel();
+
+		$list = $reportObj->getReportById($userId);
+
+		$this->view->list = $list;
 		$this->render('admin/report');
 	}
 
@@ -159,7 +171,8 @@ public function createuserAction()
 
 		$this->render('admin/createuser');
 	}
-public function listAction()
+
+	public function listAction()
 	{
 		$this->view->page = 'User Listing';
 		$UserModel = new userModel();
