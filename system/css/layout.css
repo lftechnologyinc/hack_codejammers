@@ -513,6 +513,7 @@ margin: -5px 0 0 0;
 margin: 0;
 padding: 0;
 border-bottom: 1px dotted #ccc;
+font-size:14px;
 }
 
 .tablesorter thead tr {
@@ -985,6 +986,7 @@ font-size: 14px;}
 	-ms-border-radius:5px;
 	-o-border-radius:5px;
 	border:none;
+	height:45px !important;
 	}
 	
 .btn-medium{
@@ -1032,7 +1034,22 @@ font-size: 14px;}
 		font-weight:normal !important;
 		
 		}
-	.btn-default:hover{
+		
+	.btn-red{
+	background:#D7181F;
+	background: -webkit-gradient(linear, 0 0, 0 bottom, from(#D7181F), to(#F4373C));
+	background: -webkit-linear-gradient(#D7181F, #F4373C);
+	background: -moz-linear-gradient(#D7181F, #F4373C);
+	background: -ms-linear-gradient(#D7181F, #F4373C);
+	background: -o-linear-gradient(#D7181F, #F4373C);
+	background: linear-gradient(#D7181F, #F4373C);
+	behavior: url(PIE.php);
+
+	zoom: 1;
+	border:1px solid #9e1813;
+		color:#fff;
+	}
+	.btn-default:hover, btn-red:hover{
 		opacity:0.8;
 		filter:aplha(opacity=80);
 		}
