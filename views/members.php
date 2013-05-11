@@ -1,10 +1,14 @@
 <?php ?>
-<script>
+<form name="checkinout" id="checkinout" action="" method="POST" />
 <?php if ($checkIn == 1) { ?>
-	  	$('#checkin').hide();
+	  		<input type="submit" name="checkIn" value="Check Out"/>
   <?php } else { ?>
-	  	$('#checkout').hide();
+	  		 <input type="submit" name="checkOut" id ="checkin" value="Check In"/>
   <?php } ?>
-</script>
-<input type="button" class="check" id ="checkout" value="Check Out"/>
-<input type="button" class="check" id ="checkin" value="Check In"/>
+</form>
+
+
+
+
+
+
