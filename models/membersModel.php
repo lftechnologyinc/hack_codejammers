@@ -11,20 +11,29 @@
 
       public function saveUserTime($data){
 
-		  $sql = 'insert into user_time_table  (user_id,checkin,checkout,date,state) values ('.$data["user_id"].','.$data["checkin"].','.$data["checkout"].','.$data["date"].','.$data["state"].');';
-
-$result = mysql_query($sql);
+		 $result =  $this->save('user_time_table', $data);
 
           if ($result) {
               return mysql_insert_id();
           } else {
               return false;
           }
-
-
-
-
 	  }
+  public function checkout($timeTableId,$checkOut){
+$sql="UPDATE user_time_table SET checkout = '$checkOut' , state=0 where id= '$timeTableId'";
+
+ $result = mysql_query($sql);
+
+          if ($result) {
+              return mysql_insert_id();
+          } else {
+              return false;
+          }
+  }
+
+
+
+
 
 
   }
