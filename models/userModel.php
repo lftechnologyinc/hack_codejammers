@@ -21,7 +21,7 @@ class userModel extends model
 			$user = array('username' => $username, 'access_level' =>'admin', 'user_id' => 1);
 			session::set('user', $user);
 			notification::setMessage('Well Come ! Back ' . ucfirst($username), 'success');
-			redirect('index.php?controller=admin&action=index');
+			redirect('index.php?controller=admin&action=attendencelist');
 		} else {
 			notification::setMessage('Invalid username or password !');
 			redirect('index.php?controller=user&action=login');
