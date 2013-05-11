@@ -5,7 +5,7 @@
 					You are currently working from <?php echo ($this->work_from==0)? 'Home':'Office';?>
 	  		<input type="submit" name="checkOut" value="Check Out"/>
   <?php } else { ?>
-	  		 <input type="submit" name="checkIn" value="Check In"/>
+	  		 <input class="btn-green" type="submit" name="checkIn" value="Check In"/>
   <?php } ?>
 </form>
 

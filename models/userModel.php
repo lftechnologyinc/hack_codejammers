@@ -16,12 +16,28 @@ class userModel extends model
 	}
 
 	public function doLogin($username, $password)
-	{
-		if ($username === "admin" && $password === "admin") {
-			$user = array('username' => $username, 'access_level' =>'admin', 'user_id' => 1);
+	{	
+	    
+		$query = "Select user_group_id,id from users where username = '".$username. "' AND password = '".md5($password)."'";
+
+		
+		$result = mysql_query($query);
+
+		$row = mysql_fetch_assoc($result);
+			
+		
+	   
+		if ($row) {
+			$user = array('username' => $username, 'access_level' =>($row['user_group_id'] == 1)?'admin':'registered', 'user_id' => $row['id']);
 			session::set('user', $user);
 			notification::setMessage('Well Come ! Back ' . ucfirst($username), 'success');
+			//redirect('index.php?controller=admin&action='.($row['user_group_id'] == 1)?'attendencelist':'index');
+			if($row['user_group_id'] == 1){
 			redirect('index.php?controller=admin&action=attendencelist');
+			}
+			elseif($row['user_group_id'] == 2){
+			  redirect('index.php?controller=members&action=index');  
+			}
 		} else {
 			notification::setMessage('Invalid username or password !');
 			redirect('index.php?controller=user&action=login');
@@ -68,14 +84,14 @@ class userModel extends model
 	    session::set('to_date', $_POST['to_date']);
 	    }
 
-	    if(!$where){
-	    $where = 'ut.date ='.date('Y-m-d');
+	    if(!session::get('from_date')){
+	    $where = "ut.date ='".date('Y-m-d')."'";
 	    }
 	    else{
 		$where = 'ut.date between "'.session::get('from_date').'" and "'.session::get('to_date').'"';
 	    }
 
-	    $query = "Select u.* from users as u inner join user_time_table as ut on u.id=ut.user_id";
+	    $query = "Select u.*,ut.checkin,ut.checkout,ut.date,ut.work_from from users as u inner join user_time_table as ut on u.id=ut.user_id";
 
 		if ($where) {
 			$query = $query . ' WHERE ' . $where;
@@ -107,8 +123,9 @@ class userModel extends model
 		  unset($post['submit']);
 		  unset($post['rePassword']);
 
-		  $result = " INSERT INTO users (fullname, email, address, phone_no,username, password, employee_id, created_date, login_time, user_group_id)
-		  VALUES ( '" . $post['fullname'] . "', '" . $post['email'] . "', '" . $post['address'] . "', '" . $post['phone_no'] . "', '" . $post['username'] . "', '" . md5($post['password']) . "', '" . $post['employee_id'] . "', '', '', '2')";
+
+		  $result = " INSERT INTO users (fullname, email, address, phone_no,username, password, employee_id, created_date, login_time,state, user_group_id)
+		  VALUES ( '" . $post['fullname'] . "', '" . $post['email'] . "', '" . $post['address'] . "', '" . $post['phone_no'] . "', '" . $post['username'] . "', '" . md5($post['password']) . "', '" . $post['employee_id'] . "', '', '','1', '2')";
 
 		  return mysql_query($result);
 	  }
