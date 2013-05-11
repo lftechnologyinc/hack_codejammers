@@ -1,4 +1,4 @@
-<article class="module width_full">
+<article class="module width_full" style="margin-bottom:20px;">
     <form action="index.php?controller=admin&action=savesettings" method="post">
         <header><h3>Options</h3></header>
         <div class="module_content">
@@ -25,11 +25,10 @@
 
             <div class="clear"></div>
         </div>
-        <footer>
+        <footer class="form-footer">
             <div class="submit_link">
-                <input type="submit" class="alt_btn" value="Save">
+                <input type="submit" class="btn-green btn-small" value="Save">
             </div>
         </footer>
     </form>
 </article>
-<div class="clear" style="padding: 10px;"></div>

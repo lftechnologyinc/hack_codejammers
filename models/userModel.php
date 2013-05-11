@@ -30,7 +30,7 @@ class userModel extends model
 		if ($row) {
 			$user = array('username' => $username, 'access_level' =>($row['user_group_id'] == 1)?'admin':'registered', 'user_id' => $row['id']);
 			session::set('user', $user);
-			notification::setMessage('Well Come ! Back ' . ucfirst($username), 'success');
+			notification::setMessage('Welcome ! Back ' . ucfirst($username), 'success');
 			//redirect('index.php?controller=admin&action='.($row['user_group_id'] == 1)?'attendencelist':'index');
 			if($row['user_group_id'] == 1){
 			redirect('index.php?controller=admin&action=attendencelist');
