@@ -1,0 +1,41 @@
+
+/* Default Classes */
+.left_flo {float:left;}
+.right_flo {float:right;}
+.clr {clear:both; line-height:0; height:0;}
+
+/*  Body Content Start  */
+.main {width:870px; margin:0 auto;}
+.inner_wrapper { width:840px; margin:0 auto; padding:20px; float:left; background:#fff;}
+.left_panel {width:426px; float:left;}
+.right_panel { float:right;}
+.right_panel h2 {font:bold 18px Arial, Helvetica, sans-serif; color:#cc0033; margin-bottom:10px;}
+.right_panel p {font:normal 12px Arial, Helvetica, sans-serif; color:#000; margin-bottom:10px; margin-top:0px;}
+
+/* Right grid starts */
+.right_grid {width:380px; float:left;}
+.bg_grid th {margin:0px; padding:0 0 0 5px; font:bold 12px/39px Arial, Helvetica, sans-serif; color:#000; border-bottom:2px solid #474747; }
+.bg_grid td {background:#eaebeb; font:normal 12px Arial, Helvetica, sans-serif; color:#000; border-bottom:2px solid #474747;}
+.number_bg {border:1px solid #474747; padding:2px 5px; }
+.grid_links {width:380px; float:left; margin-top:20px;}
+.shopping {width:190px; float:left; margin-top:-20px;}
+.shopping a{font:normal 14px/25px Arial, Helvetica, sans-serif; color:#000;}
+.shopping a:hover{color:#cc0000; text-decoration:underline;}
+.update {width:100px; float:right; text-align:right; margin-top: 10px;}
+
+/* ez-form */
+.ez_form {width:380px; float:left; margin-top:28px;}
+.form_hding {width:380px; float:left; color:#000;}
+.form_hding h2 {width:120px; float:left;font:bold 18px Arial, Helvetica, sans-serif; color:#cc0033; margin:0px;}
+.form_hding p{width:260px; float:left; color:#000;}
+.login_fields {width:380px; float:left; margin:0;}
+.login_fields label {width:120px; float:left; margin-top:8px; padding:5px;  font:bold 12px Arial, Helvetica, sans-serif; color:#000; text-align:right;}
+.login_fields span {margin:0; color:#C00;}
+.login_fields input[type=text] {width:237px; float:left; margin-top:8px; padding:5px; text-shadow: 0px 0px 1px #e6e6e6; border-top:1px solid #9b9c9c; border-left:1px solid #9b9c9c; background:#e7e8e9;}
+.login_fields textarea {width:242px; height:80px; font:12px Arial; margin:5px 0; color:#333; padding:3px 2px; line-height:18px; float:left; border-top:1px solid #9b9c9c; border-left:1px solid #9b9c9c; background:#e7e8e9;}
+.login_fields input[type=radio] {margin:3px 0 0 0; padding:0px;}
+.login_fields input[type=image] {float:right; margin-left:120px; margin-top:8px; padding:0; text-align:right;}
+.login_fields p {width:250px; float:right; padding-top:20px;}
+.login_fields .radio {width:120px; float:left; margin-top:8px; padding:5px;  font:bold 12px Arial, Helvetica, sans-serif; color:#000; text-align:right;}
+
+
