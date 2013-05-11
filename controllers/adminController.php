@@ -138,5 +138,10 @@ class adminController extends controller
 		redirect('index.php?controller=admin&action=settings');
 	}
 
+	public function reportAction()
+	{
+		$this->render('admin/report');
+	}
+
 }
 
