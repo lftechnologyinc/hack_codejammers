@@ -1,4 +1,4 @@
-<form action="index.php?controller=admin&action=createuser" method="post" enctype="multipart/form-data">
+<form action="index.php?controller=admin&action=createuser" method="post">
     <article class="module width_full">
         <header><h3>Add New User</h3></header>
         <div class="module_content">
@@ -50,9 +50,11 @@
         <footer>
             <div class="submit_link">
                 <input type="submit" value="save" class="alt_btn"/>
-                <input type="button" value="Cancel" onclick="document.location='index.php?controller=admin&action=index'"/>
+                <input type="button" value="Cancel" onclick="document.location='index.php?controller=admin&action=attendencelist'"/>
             </div>
         </footer>
-</form>
+
 <div style="height: 200px; overflow: hidden"></div>
 </article>
+
+    </form>
