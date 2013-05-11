@@ -513,7 +513,7 @@ margin: -5px 0 0 0;
 margin: 0;
 padding: 0;
 border-bottom: 1px dotted #ccc;
-font-size:14px;
+font-size:13px;
 }
 
 .tablesorter thead tr {
@@ -1090,6 +1090,33 @@ font-size: 14px;}
 	border-top:2px solid #666;
 	padding:10px 0;
 	}
+	
+
+h4.success{
+	  background-color: #DFF0D8;
+    border-color: #D6E9C6;
+    color: #468847;
+	  border-radius: 4px 4px 4px 4px;
+    margin-bottom: 20px;
+    padding: 8px 35px 8px 14px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	font-size:16px;
+	font-weight:normal
+	}
+	
+h4.info{
+	 background-color: #D9EDF7;
+    border-color: #BCE8F1;
+    color: #3A87AD;
+	  border-radius: 4px 4px 4px 4px;
+    margin-bottom: 20px;
+    padding: 8px 35px 8px 14px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	font-size:16px;
+	font-weight:normal
+	}
+	
+
 	
 /**==================================tools==========================================**/
 .float-none {
