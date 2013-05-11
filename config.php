@@ -14,5 +14,5 @@ define('BASE_PATH', '');
 /* * ********* data base configuration for local***************** */
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
-define('DB_PASSWORD', 'password');
-define('DB_NAME', 'hack_attendance');
+define('DB_PASSWORD', 'php');
+define('DB_NAME', 'codejammers');
