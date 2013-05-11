@@ -10,7 +10,9 @@ class myModel extends model
 
 	public function test()
 	{
-		return 'i am at model';
+		$sql = "";
+
+		$result = mysql_query($sql);
 	}
 
 }

@@ -1,40 +1,39 @@
 <?php
 
-  class membersModel extends model
-  {
-      const NUM_ROWS = 'num_rows';
+class membersModel extends model
+{
 
-      function __construct()
-      {
-          parent::__construct();
-      }
+	const NUM_ROWS = 'num_rows';
 
-      public function saveUserTime($data){
+	function __construct()
+	{
+		parent::__construct();
+	}
 
-		 $result =  $this->save('user_time_table', $data);
+	public function saveUserTime($data)
+	{
 
-          if ($result) {
-              return mysql_insert_id();
-          } else {
-              return false;
-          }
-	  }
-  public function checkout($timeTableId,$checkOut){
-$sql="UPDATE user_time_table SET checkout = '$checkOut' , state=0 where id= '$timeTableId'";
+		$result = $this->save('user_time_table', $data);
 
- $result = mysql_query($sql);
+		if ($result) {
+			return mysql_insert_id();
+		} else {
+			return false;
+		}
+	}
 
-          if ($result) {
-              return mysql_insert_id();
-          } else {
-              return false;
-          }
-  }
+	public function checkout($timeTableId, $checkOut)
+	{
+		$sql = "UPDATE user_time_table SET checkout = '$checkOut' , state=0 where id= '$timeTableId'";
 
+		$result = mysql_query($sql);
 
+		if ($result) {
+			return mysql_insert_id();
+		} else {
+			return false;
+		}
+	}
 
-
-
-
-  }
+}
 
