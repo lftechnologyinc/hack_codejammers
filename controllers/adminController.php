@@ -172,7 +172,7 @@ public function createuserAction()
 		$this->render('admin/createuser');
 	}
 
-	public function listAction()
+	public function userlistAction()
 	{
 		$this->view->page = 'User Listing';
 		$UserModel = new userModel();
