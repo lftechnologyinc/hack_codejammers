@@ -147,6 +147,21 @@ public function createuserAction()
 	{
 		$this->render('admin/createuser');
 	}
+public function listAction()
+	{	
+		$this->view->page = 'User Listing';
+		$UserModel = new userModel();
+		$this->view->users = $UserModel->getUsers();
+		$this->render('admin/userlists');
+	}
+	
+	public function attendencelistAction()
+	{	
+		$this->view->page = 'Attendence Listing';
+		$UserModel = new userModel();
+		$this->view->attendences = $UserModel->getAttendences();
+		$this->render('admin/attendencelists');
+	}
 
 }
 
