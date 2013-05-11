@@ -1,57 +1,73 @@
 <?php
 
-  class membersController extends controller
-  {
+class membersController extends controller
+{
 
-	  function __construct()
-	  {
-		  parent::__construct();
-		  $this->setlayout('admin/members');
-		   //$this->view->page = 'Dashboard';
-	  }
+	function __construct()
+	{
+		parent::__construct();
+		$this->setlayout('admin/members');
+		//$this->view->page = 'Dashboard';
+	}
 
-	  function indexAction()
-	  {
+	public function reportbyidAction()
+	{
+		if (!isset($_REQUEST['id']) || (!is_numeric($_REQUEST['id']))) {
+			notification::setMessage('Invalid user id !');
+			redirect('index.php?controller=admin&action=index');
+		}
 
-		  $user = session::get('user');
-		  $user_id = $user['user_id'];
-		  $timeTableobj = new membersModel();
-		  $timeTable = $timeTableobj->getUserTime($user_id);
-				  if (isset($timeTable[0]['state']) &&$timeTable[0]['state'] ==1) {
-			  $this->view->checkIn = 1;
-			  $this->view->CheckedInDate=$timeTable[0]['checkin'];
-		  }
-		  if (!empty($_POST)) {
-			  if (isset($_POST['checkIn'])) {
-				  $data['user_id'] = $user_id;
-				  $data['checkin'] = date('Y-m-d H:i:s');
-				  $data['date'] = date('Y-m-d');
-				  $data['state'] = 1;
+		$userId = $_REQUEST['id'];
 
-				  if (isset($timeTable) && $timeTable[0]['date'] == date('Y-m-d')) {//do not add  the new row
+		$reportObj = new reportModel();
 
-					  $timeTableobj = new membersModel();
-					  $timeTableobj->updateState($timeTable[0]['id'],1);
-				  } else {
-					  $timeTableobj = new membersModel();
-					  $timeTableobj->saveUserTime($data);
-				  }
-				  header('Location: ' . $_SERVER['REQUEST_URI']);
-			  } elseif ($_POST['checkOut']) {
-				  $data['checkout'] = date('Y-m-d H:i:s');
-				  $timeTableobj = new membersModel();
-				  $timeTableobj->checkout($timeTable[0]['id'], $data['checkout']);
-				  header('Location: ' . $_SERVER['REQUEST_URI']);
-			  }
-		  }
+		$list = $reportObj->getReportById($userId);
 
-		  $this->render('members');
-	  }
+		$this->view->list = $list;
+		$this->render('admin/report');
+	}
 
-	  function checkinoutAction()
-	  {
+	function indexAction()
+	{
 
-	  }
+		$user = session::get('user');
+		$user_id = $user['user_id'];
+		$timeTableobj = new membersModel();
+		$timeTable = $timeTableobj->getUserTime($user_id);
+		if (isset($timeTable[0]['state']) && $timeTable[0]['state'] == 1) {
+			$this->view->checkIn = 1;
+			$this->view->CheckedInDate = $timeTable[0]['checkin'];
+		}
+		if (!empty($_POST)) {
+			if (isset($_POST['checkIn'])) {
+				$data['user_id'] = $user_id;
+				$data['checkin'] = date('Y-m-d H:i:s');
+				$data['date'] = date('Y-m-d');
+				$data['state'] = 1;
 
-  }
+				if (isset($timeTable) && $timeTable[0]['date'] == date('Y-m-d')) {//do not add  the new row
+					$timeTableobj = new membersModel();
+					$timeTableobj->updateState($timeTable[0]['id'], 1);
+				} else {
+					$timeTableobj = new membersModel();
+					$timeTableobj->saveUserTime($data);
+				}
+				header('Location: ' . $_SERVER['REQUEST_URI']);
+			} elseif ($_POST['checkOut']) {
+				$data['checkout'] = date('Y-m-d H:i:s');
+				$timeTableobj = new membersModel();
+				$timeTableobj->checkout($timeTable[0]['id'], $data['checkout']);
+				header('Location: ' . $_SERVER['REQUEST_URI']);
+			}
+		}
+
+		$this->render('members');
+	}
+
+	function checkinoutAction()
+	{
+
+	}
+
+}
 
