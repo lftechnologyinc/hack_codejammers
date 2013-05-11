@@ -13,6 +13,13 @@
 	<li class="icn_profile"><a href="#">Your Profile</a></li>
 </ul>
 
+<!--<h3>Media</h3>
+<ul class="toggle">
+	<li class="icn_folder"><a href="#">File Manager</a></li>
+	<li class="icn_photo"><a href="index.php?controller=admin&action=report">Report</a></li>
+	<li class="icn_audio"><a href="#">Audio</a></li>
+	<li class="icn_video"><a href="#">Video</a></li>
+</ul>-->
 <h3>Admin</h3>
 <ul class="toggle">
 	<li class="icn_settings"><a href="index.php?controller=admin&action=settings"  title="Settings">Settings</a></li>
