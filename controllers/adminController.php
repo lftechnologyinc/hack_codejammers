@@ -120,6 +120,7 @@
 		  $this->view->product_limit = $OptionObj->getOption('product_limit');
 		  $this->view->new_product_limit = $OptionObj->getOption('new_product_limit');
 		  $this->view->event_limit = $OptionObj->getOption('event_limit');
+		  $this->view->office_ip = $OptionObj->getOption('office_ip');
 
 		  $this->render('admin/settings');
 	  }
