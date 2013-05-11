@@ -1,4 +1,4 @@
-<form method="post">
+<form method="post" action="index.php?controller=admin&action=createuser">
 
 
 	<label>Full Name</label>
