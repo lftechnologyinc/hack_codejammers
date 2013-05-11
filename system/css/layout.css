@@ -68,7 +68,7 @@ background: url(../images/header_shadow.png) no-repeat left top;
 
 .btn_view_site {
 float: left;
-width: 9%;
+width: 15%;
 }
 
 .btn_view_site a {
@@ -721,12 +721,12 @@ margin: -5px 0 5px 0;
 text-transform: uppercase;
 }
 
-fieldset input[type=text] {
+fieldset input[type=text], fieldset input[type=password] {
 -webkit-border-radius: 5px;
 -moz-border-radius: 5px;
 border-radius: 5px;
 border: 1px solid #BBBBBB;
-height: 20px;
+height: 30px;
 color: #666666;
 -webkit-box-shadow: inset 0 2px 2px #ccc, 0 1px 0 #fff;
 -moz-box-shadow: inset 0 2px 2px #ccc, 0 1px 0 #fff;
@@ -736,7 +736,7 @@ background-position: 10px 6px;
 margin: 0;
 display: block;
 float: left;
-width: 96%;
+width: 92%;
 margin: 0 10px;
 }
 
@@ -785,7 +785,6 @@ box-shadow: inset 0 2px 2px #ccc, 0 0 10px #ADDCE6;
 .submit_link {
 float: right;
 margin-right: 3%;
-padding: 5px 0;
 }
 
 .submit_link select {
@@ -1020,12 +1019,24 @@ font-size: 14px;}
 	height:auto;
 	overflow:hidden;
 	padding:5px 10px;
-	margin:10px 20px 20px 20px;
+	margin:10px 0 20px 0;
+	}
+	
+.line-height{
+	line-height:30px;
 	}
 	
 .blocks{
 	height:auto;
 	overflow:hidden;
+	}
+	
+.fieldset-width{
+	width:45%;
+	}
+	
+.form-footer{
+	background:none !important;
 	}
 	
 /**==================================tools==========================================**/
