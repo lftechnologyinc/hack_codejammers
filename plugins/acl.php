@@ -19,7 +19,7 @@ class acl
 				$registeredAllowedList = array('index');
 				$allowedList = array_merge($allowedList, $registeredAllowedList);
 			default :
-				$defaultAllowedList = array('error', 'index', 'user');
+				$defaultAllowedList = array('error', 'index', 'user','members');
 				$allowedList = array_merge($allowedList, $defaultAllowedList);
 				break;
 		}
