@@ -49,7 +49,7 @@
 
         <footer>
             <div class="submit_link">
-                <input type="submit" value="save" class="alt_btn"/>
+                <input type="submit" name="submit" value="save" class="alt_btn"/>
                 <input type="button" value="Cancel" onclick="document.location='index.php?controller=admin&action=attendencelist'"/>
             </div>
         </footer>
