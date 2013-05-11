@@ -20,9 +20,15 @@
 				  if (isset($timeTable[0]['state']) &&$timeTable[0]['state'] ==1) {
 			  $this->view->checkIn = 1;
 			  $this->view->CheckedInDate=$timeTable[0]['checkin'];
+			  $this->view->work_from=$timeTable[0]['work_from'];
 		  }
 		  if (!empty($_POST)) {
 			  if (isset($_POST['checkIn'])) {
+				  //checking the ip
+				  //getting the ip of office
+				  $officeIp=$timeTableobj->getOfficeIp();
+				  $currentIp=$timeTableobj->GetIP();
+				  if($officeIp!=$currentIp)$data['work_from']=0;else $data['work_from']=1;
 				  $data['user_id'] = $user_id;
 				  $data['checkin'] = date('Y-m-d H:i:s');
 				  $data['date'] = date('Y-m-d');

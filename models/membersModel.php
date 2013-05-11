@@ -2,64 +2,87 @@
 
   class membersModel extends model
   {
-      const NUM_ROWS = 'num_rows';
 
-      function __construct()
-      {
-          parent::__construct();
-      }
+	  const NUM_ROWS = 'num_rows';
 
-      public function saveUserTime($data){
-
-		 $result =  $this->save('user_time_table', $data);
-
-          if ($result) {
-              return mysql_insert_id();
-          } else {
-              return false;
-          }
+	  function __construct()
+	  {
+		  parent::__construct();
 	  }
-  public function checkout($timeTableId,$checkOut){
-$sql="UPDATE user_time_table SET checkout = '$checkOut' , state=0 where id= '$timeTableId'";
 
- $result = mysql_query($sql);
+	  public function saveUserTime($data)
+	  {
 
-          if ($result) {
-              return mysql_insert_id();
-          } else {
-              return false;
-          }
-  }
+		  $result = $this->save('user_time_table', $data);
 
-  public function getUserTime($user_id){
-	$sql="SELECT *
+		  if ($result) {
+			  return mysql_insert_id();
+		  } else {
+			  return false;
+		  }
+	  }
+
+	  public function checkout($timeTableId, $checkOut)
+	  {
+		  $sql = "UPDATE user_time_table SET checkout = '$checkOut' , state=0 where id= '$timeTableId'";
+
+		  $result = mysql_query($sql);
+
+		  if ($result) {
+			  return mysql_insert_id();
+		  } else {
+			  return false;
+		  }
+	  }
+
+	  public function getUserTime($user_id)
+	  {
+		  $sql = "SELECT *
     FROM user_time_table
     WHERE user_id = '$user_id'
     ORDER BY id DESC LIMIT 1";
-		$result = mysql_query($sql);
-	if ($result) {
-			while ($row = mysql_fetch_assoc($result)) {
-				$return[] = $row;
-			}
-		}
-		return $return;
-  }
+		  $result = mysql_query($sql);
+		  if ($result) {
+			  while ($row = mysql_fetch_assoc($result)) {
+				  $return[] = $row;
+			  }
+		  }
+		  return $return;
+	  }
 
-  public function updateState($timeTableId,$state){
+	  public function updateState($timeTableId, $state)
+	  {
 
-	  $sql="UPDATE user_time_table SET state='$state' where id= '$timeTableId'";
+		  $sql = "UPDATE user_time_table SET state='$state' where id= '$timeTableId'";
 
- $result = mysql_query($sql);
+		  $result = mysql_query($sql);
 
-          if ($result) {
-              return mysql_insert_id();
-          } else {
-              return false;
-          }
-  }
+		  if ($result) {
+			  return mysql_insert_id();
+		  } else {
+			  return false;
+		  }
+	  }
 
+	  function GetIP()
+	  {
+		  return $_SERVER['REMOTE_ADDR'];
+	  }
 
+	  function getOfficeIp()
+	  {
+		  $sql = "SELECT `option_value`
+FROM `options`
+WHERE `option_name` = 'office_ip'";
 
+		  $result = mysql_query($sql);
+		  $row = mysql_fetch_assoc($result);
+		  if ($row) {
+			  return $row['option_value'];
+		  } else {
+			  return false;
+		  }
+	  }
 
   }
 
