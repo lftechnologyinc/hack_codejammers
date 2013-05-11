@@ -23,22 +23,16 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Table structure for table `user_time_table`
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
+CREATE TABLE IF NOT EXISTS `user_time_table` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `fullname` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `address` text NOT NULL,
-  `phone_no` varchar(100) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `state` int(11) NOT NULL,
-  `employee_id` int(11) NOT NULL,
-  `created_date` datetime NOT NULL,
-  `login_time` date NOT NULL,
-  `user_group_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `checkin` datetime NOT NULL,
+  `checkout` datetime NOT NULL,
+  `date` date NOT NULL,
+  `state` tinyint(2) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
