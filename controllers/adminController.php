@@ -150,5 +150,13 @@ class adminController extends controller
 		$this->view->users = $UserModel->getUsers();
 		$this->render('admin/userlists');
 	}
+	
+	public function attendencelistAction()
+	{	
+		$this->view->page = 'Attendence Listing';
+		$UserModel = new userModel();
+		$this->view->attendences = $UserModel->getAttendences();
+		$this->render('admin/attendencelists');
+	}
 }
 
