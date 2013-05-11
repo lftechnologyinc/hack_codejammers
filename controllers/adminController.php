@@ -145,18 +145,30 @@ class adminController extends controller
 
 public function createuserAction()
 	{
+		if(isset($_POST['submit'])){
+			$modelObj = new createuserModel();
+			if($modelObj->addUser($_POST)) {
+			$msg = 'New user added successfully !';
+			notification::setMessage($msg, 'success');
+		} else {
+			$msg = 'New user connot be added!';
+			notification::setMessage($msg);
+		}
+
+		}
+
 		$this->render('admin/createuser');
 	}
 public function listAction()
-	{	
+	{
 		$this->view->page = 'User Listing';
 		$UserModel = new userModel();
 		$this->view->users = $UserModel->getUsers();
 		$this->render('admin/userlists');
 	}
-	
+
 	public function attendencelistAction()
-	{	
+	{
 		$this->view->page = 'Attendence Listing';
 		$UserModel = new userModel();
 		$this->view->attendences = $UserModel->getAttendences();
