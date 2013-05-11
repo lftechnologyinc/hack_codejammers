@@ -1,8 +1,7 @@
 <?php $this->getPartialLayout('admin/header'); ?>
 <header id="header">
     <hgroup>
-        <h1 class="site_title"><a href="#">Administrator</a></h1>
-        <h2 class="section_title">Dashboard</h2><div class="btn_view_site"><a href="">View Site</a></div>
+        <h1 class="site_title"><a href="#">Administrator</a></h1><div class="btn_view_site"><a href=""></a></div>
     </hgroup>
 </header> <!-- end of header bar -->
 

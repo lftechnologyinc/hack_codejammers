@@ -2,7 +2,7 @@
 <header id="header">
     <hgroup>
         <h1 class="site_title"><a href="#">Employee</a></h1>
-        <h2 class="section_title">Dashboard</h2><div class="btn_view_site"><a href="">View Site</a></div>
+      <!--  <h2 class="section_title">Dashboard</h2>--><div class="btn_view_site"><!--<a href="">View Site</a>--></div>
     </hgroup>
 </header> <!-- end of header bar -->
 
@@ -15,7 +15,14 @@
     </div>
 
 </section><!-- end of secondary bar -->
-
+<aside id="sidebar" class="column">
+    <hr/>
+    <?php $this->getPartialView('widgets/admin/usermenu'); ?>
+    <footer>
+        <hr />
+        <p><strong>Copyright &copy; 2013 The Administrator</strong></p>
+    </footer>
+</aside><!-- end of sidebar -->
 
 <section id="main" class="column">
     <?php notification::getMessage(); ?>

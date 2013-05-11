@@ -7,7 +7,7 @@
 	  {
 		  parent::__construct();
 		  $this->setlayout('admin/members');
-		  //$this->view->page = 'Dashboard';
+		   //$this->view->page = 'Dashboard';
 	  }
 
 	  function indexAction()
@@ -19,6 +19,7 @@
 		  $timeTable = $timeTableobj->getUserTime($user_id);
 				  if (isset($timeTable[0]['state']) &&$timeTable[0]['state'] ==1) {
 			  $this->view->checkIn = 1;
+			  $this->view->CheckedInDate=$timeTable[0]['checkin'];
 		  }
 		  if (!empty($_POST)) {
 			  if (isset($_POST['checkIn'])) {

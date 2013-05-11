@@ -17,11 +17,12 @@
 		<thead>
 			<tr>
 				<th>SN</th>
-				<th>Heading</th>
+				<th>Name</th>
 				<!--<th>Introduction</th>-->
-				<th>Image</th>
-				<th>Category</th>
-				<th>Action</th>
+				<th>Date</th>
+				<th>Check In</th>
+				<th>Check Out</th>
+                <th>Status</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -45,6 +46,7 @@
 						<a href="index.php?controller=admin&action=delete&id=<?php echo $article['id'] ?>" title="Delete">
 							<img src="system/images/icn_trash.png"/></a>
 					</td>
+                    <td>&nbsp;</td>
 				</tr>
 			<?php endforeach; ?>
 
