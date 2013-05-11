@@ -55,70 +55,67 @@
       $data = $this->data;
   }
 ?>
+
 <form action="index.php?controller=admin&action=save" method="post" enctype="multipart/form-data">
-    <article class="module width_full">
-        <header><h3>Post New Article</h3></header>
-        <div class="module_content">
-            <fieldset style="width:46%; float:left; margin-right: 3%;">
-                <label>Title</label>
-                <input type="text" name="heading" value="<?php echo $data['heading'] ?>" style="width:92%;"/>
-            </fieldset>
-            <fieldset style="width:47%; float:right; margin-right: 3%;">
-                <label>Publish Date</label>
-                <input type="text" name="publish_date" value="<?php echo $data['publish_date'] ?>" id="datepicker" style="width:92%;"/>
-            </fieldset>
-            <div class="clear"></div>
-            <fieldset style="width:46%; float:left; margin-right: 3%;">
-                <label>Category</label>
-                <select name="type" >
-                    <?php
+  <article class="module width_full">
+  <header>
+    <h3>Add User</h3>
+  </header>
+  <div class="module_content blocks">
+    <fieldset class="fieldset-width margin-rgt20 float-lft">
+      <label>Full Name</label>
+      <input type="text" name="heading" value="" placeholder="Anu Shakya" />
+    </fieldset>
+    <fieldset class="fieldset-width margin-rgt20 float-lft">
+      <label>Email</label>
+      <input type="text" name="publish_date" value="" placeholder="anushakya@hotmail.com" />
+    </fieldset>
+    <div class="clear"></div>
+    <fieldset class="fieldset-width margin-rgt20 float-lft">
+      <label>Address</label>
+      <input type="text" value=""  placeholder="Hadigaun, Kathmandu"/>
+      <!--<select name="type" >
+        <?php
 
                       $type = $data['type'];
                     ?>
-                    <option value="product" <?php echo ($type == 'product') ? 'selected="selected"' : ''; ?>>Product</option>
-                    <option value="event" <?php echo ($type == 'event')
+        <option value="product" <?php echo ($type == 'product') ? 'selected="selected"' : ''; ?>>Product</option>
+        <option value="event" <?php echo ($type == 'event')
                                 ? 'selected="selected"' : '';
                     ?>>Event</option>
-                    <option value="new product"  <?php echo ($type == 'new product') ? 'selected="selected"' : ''; ?>>New Product</option>
-                </select>
-            </fieldset>
-            <fieldset style="width:47%; float:right; margin-right: 3%;">
-                <label>Image</label>
-                <div class="clear"></div>
-                <div style="padding:5px;">
-                <?php if ($data['image']): ?>
-                      <img src="userdata/images/<?php echo $data['image']; ?>" width="200"/>
-  <?php endif; ?>
-                </div>
-                <div class="clear"></div>
-                <input type="file" name="file" style="width:92%;"/>
-            </fieldset>
-
-            <div class="clear"></div>
-            <fieldset>
-                <label>Introduction</label>
-                <div class="clear"></div>
-                <textarea id="introduction" name="introduction" style="width:100%;"><?php echo $data['introduction']; ?></textarea>
-            </fieldset>
-            <div class="clear"></div>
-            <fieldset>
-                <label>Description</label>
-                <div class="clear"></div>
-                <textarea id="description" name="description" rows="30" style="width: 100%"><?php echo $data['description'] ?></textarea>
-            </fieldset>
-
-
-        </div>
-        <input type="hidden" name="id" value="<?php echo $data['id'] ?>"/>
-        <input type="hidden" name="filename" value="<?php echo $data['image'] ?>"/>
-
-        <footer>
-            <div class="submit_link">
-                <input type="submit" value="save" class="alt_btn"/>
-                <input type="button" value="Cancel" onclick="document.location='index.php?controller=admin&action=index'"/>
-            </div>
-        </footer>
+        <option value="new product"  <?php echo ($type == 'new product') ? 'selected="selected"' : ''; ?>>New Product</option>
+      </select>-->
+    </fieldset>
+    <fieldset class="fieldset-width margin-right20 float-lft">
+      <label>Contact Number</label>
+      <div class="clear"></div>
+      <input type="text" value="" placeholder="9843470302" />
+    </fieldset>
+    <div class="clear"></div>
+    <fieldset class="fieldset-width margin-rgt20 float-lft">
+      <label>Username</label>
+      <div class="clear"></div>
+      <input type="text" value="" placeholder="Anu Shakya" />
+    </fieldset>
+    <fieldset class="fieldset-width margin-rgt20 float-lft">
+      <label>Password</label>
+      <div class="clear"></div>
+      <input type="password" value="" placeholder="123456" />
+    </fieldset>
+    <div class="clear"></div>
+    <fieldset class="fieldset-width margin-rgt20 float-lft">
+      <label>Employee ID</label>
+      <div class="clear"></div>
+      <input type="text" value="" placeholder="123456" />
+    </fieldset>
+  </div>
+  <input type="hidden" name="id" value="<?php echo $data['id'] ?>"/>
+  <input type="hidden" name="filename" value="<?php echo $data['image'] ?>"/>
+  <footer class="form-footer">
+    <div class="submit_link">
+      <input type="submit" value="Save" class=" btn-medium btn-green"/>
+      <input type="button" value="Cancel" onclick="document.location='index.php?controller=admin&action=index'"/>
+    </div>
+  </footer>
 </form>
-<div style="height: 200px; overflow: hidden"></div>
 </article>
-
