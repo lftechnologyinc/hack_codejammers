@@ -25,6 +25,7 @@ function r($data, $exit = 0)
  */
 function getImage($url)
 {
+	return false;
 	return 'userdata/image.php/image-name.png?width=50&amp;image=' . BASE_URL . 'userdata/images/' . $url;
 }
 
