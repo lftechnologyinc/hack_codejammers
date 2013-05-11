@@ -2,6 +2,10 @@
 
 session_start();
 
+// for temp purpose to dispable warrning about dipricated functiona...
+#@TO DO NEED TO REMOVE ALL WARNINGS..
+error_reporting(0);
+
 /**
  *  include class file at runtime according to class name
  * @todo scan path information from class name and inclue..instead of searching on standard folder

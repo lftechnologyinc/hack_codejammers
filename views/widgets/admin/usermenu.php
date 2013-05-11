@@ -1,9 +1,11 @@
 <h3>Report</h3>
-
+<?php
+$user = session::get('user');
+?>
 <h3>Ohter Employee Information</h3>
 <ul class="toggle">
 	<li class="icn_view_users"><a href="index.php?controller=members&action=index">Check in / out</a></li>
-	<li class="icn_categories"><a href="index.php?controller=admin&action=attendencelist">My time record</a></li>
+	<li class="icn_categories"><a href="index.php?controller=members&action=reportbyid&id=<?php echo $user['user_id']; ?>">My time record</a></li>
 	<!--<li class="icn_profile"><a href="#">Your Profile</a></li>-->
 </ul>
 <h3>Employee</h3>
