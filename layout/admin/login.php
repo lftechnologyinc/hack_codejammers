@@ -19,7 +19,7 @@
 <!-- end of secondary bar --> 
 <aside id="sidebar" style="visibility:hidden;">
 </aside>
-<section id="main" class="column no-bg">
+<section id="main" class="column no-bg login-form">
   <?php notification::getMessage(); ?>
   <?php $this->getContent(); ?>
 </section>
