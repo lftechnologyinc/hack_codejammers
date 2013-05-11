@@ -12,18 +12,17 @@
 		</thead>
 		<tbody>
 			<?php
-			r($this->list);
 			$counter = 1;
-			$this->articles = array(1, 2, 3, 4, 5, 6, 7, 8);
+			
 			foreach ($this->list as $list) :
 				$class = ($counter % 2 == 0) ? 'even-row' : 'odd-row';
 				?>
 				<tr class="<?php echo $class; ?>">
 					<td><?php echo $counter++; ?></td>
-					<td><?php echo $article ?></td>
-					<td><?php echo $article ?></td>
-					<td><?php echo $article ?></td>
-					<td><?php echo $article ?></td>
+					<td><?php echo $list['date'] ?></td>
+					<td><?php echo $list['checkin'] ?></td>
+					<td><?php echo $list['checkout'] ?></td>
+					<td><?php echo ($list['work_from']) ? 'Office' : 'Home' ?></td>
 				</tr>
 			<?php endforeach; ?>
 

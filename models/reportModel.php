@@ -10,21 +10,17 @@ class reportModel extends model
 
 	public function getReportById($id)
 	{
-
-		r($id);exit;
-		$sql = "SELECT * FROM user_time_table WHERE id = $id";
+		$sql = "SELECT * FROM user_time_table WHERE user_id = $id";
 		$result = mysql_query($sql);
 
-		return mysql_fetch_assoc($result);
+		$rows = array();
+		if ($result) {
+			while ($row = mysql_fetch_assoc($result)) {
+				$rows[] = $row;
+			}
+		}
 
-		//$return = array();
-
-		//if ($result) {
-			//while ($row = mysql_fetch_assoc($result)) {
-				//$return[] = $row;
-			//}
-		//}
-		//return $return;
+		return $rows;
 	}
 
 }
