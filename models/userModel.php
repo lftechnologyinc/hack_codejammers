@@ -34,6 +34,33 @@ class userModel extends model
 			redirect('index.php?controller=user&action=login');
 		}
 	}
+	
+	public function getUsers($where = '', $order = '', $limit = 20)
+	{
+		$query = "Select * from users";
+
+		if ($where) {
+			$query = $query . ' WHERE ' . $where;
+		}
+
+		if ($order) {
+			$query = $query . ' ORDER BY ' . $order;
+		}
+
+		if ($limit) {
+			$query = $query . ' LIMIT 0,' . $limit;
+		}
+
+
+		$result = mysql_query($query);
+
+		$rows = array();
+		while ($row = mysql_fetch_assoc($result)) {
+			$rows[] = $row;
+		}
+
+		return $rows;
+	}
 
 }
 

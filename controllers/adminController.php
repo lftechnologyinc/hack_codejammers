@@ -142,5 +142,13 @@ class adminController extends controller
 	{
 		$this->render('admin/createuser');
 	}
+	
+	public function listAction()
+	{	
+		$this->view->page = 'User Listing';
+		$UserModel = new userModel();
+		$this->view->users = $UserModel->getUsers();
+		$this->render('admin/userlists');
+	}
 }
 
