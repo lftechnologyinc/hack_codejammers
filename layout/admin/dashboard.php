@@ -17,6 +17,17 @@
 				<a class="current"><?php echo $this->page; ?></a></article>
 		</div>
 	</section><!-- end of secondary bar -->
+    <aside id="sidebar" class="column">
+		<form class="quick_search">
+			<input type="text" value="Quick Search" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
+		</form>
+		<hr/>
+		<?php $this->getPartialView('widgets/admin/menu'); ?>
+		<footer>
+			<hr />
+			<p><strong>Copyright &copy; 2013 The Administrator</strong></p>
+		</footer>
+	</aside>
 	<section id="main" class="column">
 		<?php notification::getMessage(); ?>
 
@@ -28,17 +39,7 @@
 
 
 	</section>
-	<aside id="sidebar" class="column">
-		<form class="quick_search">
-			<input type="text" value="Quick Search" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
-		</form>
-		<hr/>
-		<?php $this->getPartialView('widgets/admin/menu'); ?>
-		<footer>
-			<hr />
-			<p><strong>Copyright &copy; 2013 The Administrator</strong></p>
-		</footer>
-	</aside><!-- end of sidebar -->
+	<!-- end of sidebar -->
 
 
 	<?php $this->getPartialLayout('admin/footer'); ?>
