@@ -158,7 +158,7 @@ class adminController extends controller
 public function createuserAction()
 	{
 		if(isset($_POST['submit'])){
-			$modelObj = new createuserModel();
+			$modelObj = new userModel();
 			if($modelObj->addUser($_POST)) {
 			$msg = 'New user added successfully !';
 			notification::setMessage($msg, 'success');
