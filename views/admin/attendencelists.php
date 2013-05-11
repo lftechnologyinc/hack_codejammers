@@ -13,9 +13,9 @@ $('document').ready(function(){
     <form method="post" action="index.php?controller=admin&action=attendencelist">
 	<div class ="filter">
 	<label>From Date</label>
-	<input type="text" name="from_date" value="<?php echo date('Y-m-d') ?>" id="from_date"/>
+	<input type="text" name="from_date" value="<?php echo (session::get('from_date'))?session::get('from_date'):date('Y-m-d') ?>" id="from_date"/>
 	<label>To Date</label>
-	<input type="text" name="to_date" value="<?php echo date('Y-m-d') ?>" id="to_date"/>
+	<input type="text" name="to_date" value="<?php echo (session::get('to_date'))?session::get('to_date'):date('Y-m-d') ?>" id="to_date"/>
 	<input type="submit" value="Show"/>
     </div>
     </form>

@@ -4,11 +4,12 @@
 		<thead>
 			<tr>
 				<th>SN</th>
-				<th>Heading</th>
-				<!--<th>Introduction</th>-->
-				<th>Image</th>
-				<th>Category</th>
-				<th>Action</th>
+				<th>Name</th>
+				<th>Username</th>
+				<th>Email</th>
+				<th>Contact No</th>
+				<th>Card No</th>
+				<th>Status</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -19,18 +20,19 @@
 				?>
 				<tr class="<?php echo $class; ?>">
 					<td><?php echo $counter++; ?></td>
-					<td><?php echo $article['heading'] ?></td>
-					<!--<td><?php // echo $article['introduction']  ?></td>-->
+					<td><?php echo $user['fullname'] ?></td>
+					<td><?php  echo $user['username']  ?></td>
 					<td>
-						<img src="<?php echo getImage($article['image']); ?>" alt="img" />
+					<?php echo $user['email']?>
 					</td>
-					<td><i><?php echo ucfirst($article['type']); ?></i></td>
-
+					<td><?php echo $user['phone_no']; ?></td>
+					<td><?php echo $user['employee_id']; ?></td>
 					<td>
-						<a href="index.php?controller=admin&action=edit&id=<?php echo $article['id'] ?>" title="Edit">
+					    <?php echo ($user['state'])?'Active':'Inactive/Resign'; ?>
+						<!--<a href="index.php?controller=admin&action=edit&id=<?php echo $article['id'] ?>" title="Edit">
 							<img src="system/images/icn_edit.png"/></a>&nbsp;&nbsp;&nbsp;&nbsp;
 						<a href="index.php?controller=admin&action=delete&id=<?php echo $article['id'] ?>" title="Delete">
-							<img src="system/images/icn_trash.png"/></a>
+							<img src="system/images/icn_trash.png"/></a>-->
 					</td>
 				</tr>
 			<?php endforeach; ?>
