@@ -143,5 +143,10 @@ class adminController extends controller
 		$this->render('admin/report');
 	}
 
+public function createuserAction()
+	{
+		$this->render('admin/createuser');
+	}
+
 }
 
