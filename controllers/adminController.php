@@ -157,8 +157,8 @@
 
 	  public function createuserAction()
 	  {
+
 		  if (isset($_POST['submit'])) {
-			  if(trim($_POST['password']) == trim($_POST['rePassword'])) {
 				  $modelObj = new userModel();
 				  if ($modelObj->addUser($_POST)) {
 					  $msg = 'New user added successfully !';
@@ -166,13 +166,8 @@
 				  } else {
 					  $msg = 'New user connot be added!';
 					  notification::setMessage($msg);
-					  $this->view->post = $_POST;
 				  }
-			  } else {
-				  $msg = 'Please match the password with re-password.';
-				  notification::setMessage($msg);
-				  $this->view->post = $_POST;
-			  }
+
 		  }
 
 		  $this->render('admin/createuser');

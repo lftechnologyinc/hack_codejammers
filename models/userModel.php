@@ -34,7 +34,7 @@ class userModel extends model
 			redirect('index.php?controller=user&action=login');
 		}
 	}
-	
+
 	public function getUsers($where = '', $order = '', $limit = 20)
 	{
 		$query = "Select * from users";
@@ -61,20 +61,20 @@ class userModel extends model
 
 		return $rows;
 	}
-	
+
 	public function getAttendences($where = '', $order = 'u.fullname', $limit = 20)
 	{   if(isset($_POST) && ($_POST['from_date'] || $_POST['to_date'])){
 	    session::set('from_date', $_POST['from_date']);
 	    session::set('to_date', $_POST['to_date']);
 	    }
-	    
+
 	    if(!$where){
 	    $where = 'ut.date ='.date('Y-m-d');
 	    }
 	    else{
 		$where = 'ut.date between "'.session::get('from_date').'" and "'.session::get('to_date').'"';
 	    }
-	    
+
 	    $query = "Select u.* from users as u inner join user_time_table as ut on u.id=ut.user_id";
 
 		if ($where) {
@@ -99,7 +99,7 @@ class userModel extends model
 
 		return $rows;
 	}
-	
+
 	public function addUser($post)
 	  {
 
@@ -107,18 +107,8 @@ class userModel extends model
 		  unset($post['submit']);
 		  unset($post['rePassword']);
 
-
-
 		  $result = " INSERT INTO users (fullname, email, address, phone_no,username, password, employee_id, created_date, login_time, user_group_id)
 		  VALUES ( '" . $post['fullname'] . "', '" . $post['email'] . "', '" . $post['address'] . "', '" . $post['phone_no'] . "', '" . $post['username'] . "', '" . md5($post['password']) . "', '" . $post['employee_id'] . "', '', '', '2')";
-
-
-		  echo $result;
-		  exit;
-
-
-
-
 
 		  return mysql_query($result);
 	  }
