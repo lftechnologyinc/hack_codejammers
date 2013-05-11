@@ -15,7 +15,14 @@
     </div>
 
 </section><!-- end of secondary bar -->
-
+<aside id="sidebar" class="column">
+    <hr/>
+    <?php $this->getPartialView('widgets/admin/usermenu'); ?>
+    <footer>
+        <hr />
+        <p><strong>Copyright &copy; 2013 The Administrator</strong></p>
+    </footer>
+</aside><!-- end of sidebar -->
 
 <section id="main" class="column">
     <?php notification::getMessage(); ?>
