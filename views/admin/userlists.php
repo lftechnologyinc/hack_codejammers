@@ -1,6 +1,6 @@
 <header><h3><?php echo $this->page; ?></h3></header>
 <div class="module_content">
-	<table cellspacing="0" class="tablesorter">
+	<table cellspacing="0" class="tablesorter border-all border-radius table-striped table-hover">
 		<thead>
 			<tr>
 				<th>SN</th>
