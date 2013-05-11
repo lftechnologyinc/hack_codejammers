@@ -47,6 +47,7 @@
 				  $data['checkout'] = date('Y-m-d H:i:s');
 				  $timeTableobj = new membersModel();
 				  $timeTableobj->checkout($timeTable[0]['id'], $data['checkout']);
+				  notification::setMessage('You have successfully checkout');
 				  header('Location: ' . $_SERVER['REQUEST_URI']);
 			  }
 		  }
